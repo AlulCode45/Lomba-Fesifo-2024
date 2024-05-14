@@ -1,0 +1,78 @@
+body {
+    background: #05050B;
+}
+
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
+}
+
+body {
+    overflow-x: hidden;
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(to bottom,
+            transparent,
+            rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+.glow-decorator1 {
+    -webkit-backdrop-filter: blur(0px);
+    -webkit-filter: blur(100px);
+    backdrop-filter: blur(0px);
+    background: linear-gradient(180deg, #57aae6 0%, rgb(217, 139, 186) 100%);
+    border-radius: 1000px;
+    filter: blur(100px);
+    flex: none;
+    height: 700px;
+    left: -234px;
+    opacity: .19;
+    position: absolute;
+    top: 202px;
+    width: 578px;
+    z-index: 1;
+}
+
+.glow-decorator2 {
+    -webkit-backdrop-filter: blur(0px);
+    -webkit-filter: blur(100px);
+    backdrop-filter: blur(0px);
+    background: linear-gradient(180deg, #57aae6 0%, rgb(217, 139, 186) 100%);
+    border-radius: 119px;
+    filter: blur(100px);
+    flex: none;
+    height: 416px;
+    opacity: .19;
+    position: absolute;
+    right: -82px;
+    top: 104px;
+    width: 414px;
+    z-index: 1
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+.card-header {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(100px);
+    -webkit-backdrop-filter: blur(100px);
+    padding: 20px;
+}
+
+main {
+    margin-bottom: 50px;
+}
