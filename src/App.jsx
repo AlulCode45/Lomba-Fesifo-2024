@@ -2,6 +2,7 @@ import React from 'react'
 import './App.css'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { AdvancedChart } from 'react-tradingview-embed';
+import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaTwitch, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 const bitcoin = [
   {
@@ -304,7 +305,7 @@ export default function App() {
         </section>
 
         <section className='grid grid-cols-2 gap-2 items-center'>
-          <div className="col flex justify-start">
+          <div className="col flex justify-center">
             <img src="/assets/Blockchain.png" alt="" />
           </div>
           <div className="col">
@@ -341,70 +342,53 @@ export default function App() {
             <div class="flex">
               <div class="w-7/12">
                 <h1 class="font-bold text-3xl">Finanza.</h1>
-                <p class="text-[9px]">
-                  smartly manage your finances and crypto investment
+                <p class="text-sm">
+                  Smartly manage your finances and crypto investment
                 </p>
                 <div class="addres">
-                  <h4 class="my-4">jakarta</h4>
-                  <p class="text-[12px]">
+                  <h4 class="mt-4 font-bold">Jakarta</h4>
+                  <p class="text-sm">
                     Gedung Millennium Centennial Center Lt.2, Jl. Jend. Sudirman No.
                     Kav 25, Kuningan Jakarta Selatan 2920.
                   </p>
-                  <h4 class="my-4">Bali</h4>
-                  <p class="text-[12px]">
+                  <h4 class="mt-4 font-bold">Bali</h4>
+                  <p class="text-sm">
                     Jl. Sunset Road No. 48 a-b, Legian, Kuta, Kabupaten Badung, Bali
                     8036l.
                   </p>
 
-                  <p class="text-[12px] my-4">
+                  <p class="text-sm my-4">
                     Tamora Square, Jl. subak Sari l3, Desa Tibubeneng, Kec. Kuta
                     Utara, Kabupaten Badung, Bali 80361.
                   </p>
                 </div>
                 <div class="contact flex gap-3 ml-2">
                   <a href="#">
-                    <i
-                      data-feather="facebook"
-                      class="w-7 h-7 bg-purple-400 text-white p-2 rounded-full hover:bg-purple-600"
-                    ></i></a
-                  ><a href="#"
-                  ><i
-                    data-feather="twitter"
-                    class="w-7 h-7 bg-purple-400 text-white p-2 rounded-full hover:bg-purple-600"
-                  ></i></a
-                  ><a href="#"
-                  ><i
-                    data-feather="youtube"
-                    class="w-7 h-7 bg-purple-400 text-white p-2 rounded-full hover:bg-purple-600"
-                  ></i></a
-                  ><a href="#"
-                  ><i
-                    data-feather="instagram"
-                    class="w-7 h-7 bg-purple-400 text-white p-2 rounded-full hover:bg-purple-600"
-                  ></i></a
-                  ><a href="#"
-                  ><i
-                    data-feather="linkedin"
-                    class="w-7 h-7 bg-purple-400 text-white p-2 rounded-full hover:bg-purple-600"
-                  ></i
-                    ></a>
-                  <a href="#"
-                  ><i
-                    data-feather="github"
-                    class="w-7 h-7 bg-purple-400 text-white p-2 rounded-full hover:bg-purple-600"
-                  ></i
-                    ></a>
-                  <a href="#"
-                  ><i
-                    data-feather="twitch"
-                    class="w-7 h-7 bg-purple-400 text-white p-2 rounded-full hover:bg-purple-600"
-                  ></i
-                    ></a>
+                    <FaFacebook className='w-7 h-7 bg-purple-800 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                  </a>
+                  <a href="#">
+                    <FaTwitter className='w-7 h-7 bg-purple-800 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                  </a>
+                  <a href="#">
+                    <FaYoutube className='w-7 h-7 bg-purple-800 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                  </a>
+                  <a href="#">
+                    <FaInstagram className='w-7 h-7 bg-purple-800 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                  </a>
+                  <a href="#">
+                    <FaLinkedin className='w-7 h-7 bg-purple-800 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                  </a>
+                  <a href="#">
+                    <FaGithub className='w-7 h-7 bg-purple-800 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                  </a>
+                  <a href="#">
+                    <FaTwitch className='w-7 h-7 bg-purple-800 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                  </a>
                 </div>
               </div>
               <div class="footer-menu flex mt-2 gap-8 w-5/12">
                 <div class="p-4">
-                  <ul class="text-[12px] grid gap-2">
+                  <ul class="text-sm grid gap-2">
                     <li>
                       <a href="#" class="text-[16px] hover:underline">Perusahaan</a>
                     </li>
@@ -417,7 +401,7 @@ export default function App() {
                   </ul>
                 </div>
                 <div class="p-4">
-                  <ul class="text-[12px] grid gap-2">
+                  <ul class="text-sm grid gap-2">
                     <li>
                       <a href="#" class="text-[16px] hover:underline">Produk</a>
                     </li>
@@ -426,7 +410,7 @@ export default function App() {
                   </ul>
                 </div>
                 <div class="p-4">
-                  <ul class="text-[12px] grid gap-2">
+                  <ul class="text-sm grid gap-2">
                     <li>
                       <a href="#" class="text-[16px] hover:underline">Informasi</a>
                     </li>
@@ -443,7 +427,7 @@ export default function App() {
               </div>
             </div>
             <div class="footer-title">
-              <p class="text-[10px] w-[900px] my-6">
+              <p class="text-sm w-[900px] my-6">
                 Perdagangan aset kripto merupakan aktivitas berisiko tinggi. Harga
                 aset kripto sangat fluktuatif, di mana harga dapat berubah secara
                 signifikan dari waktu ke waktu Harap lakukan riset sebelum membuat
