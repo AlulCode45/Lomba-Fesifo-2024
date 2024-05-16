@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 import { LineChart, Line, ResponsiveContainer } from 'recharts';
 import { AdvancedChart } from 'react-tradingview-embed';
@@ -184,6 +184,9 @@ export function Bearish() {
 
 export default function App() {
   const [activeElement, setActiveElement] = useState("");
+  const [chartPriceBtc, setChartPriceBtc] = useState(Bullish);
+  const [chartPriceEth, setChartPriceEth] = useState(Bullish);
+  const [chartPriceDoge, setChartPriceDoge] = useState(Bullish);
 
   const handleClick = (value) => {
     if (value === activeElement) {
@@ -192,6 +195,16 @@ export default function App() {
       setActiveElement(value);
     }
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setChartPriceBtc(Math.random() < 0.5 ? Bullish : Bearish);
+      setChartPriceEth(Math.random() < 0.5 ? Bullish : Bearish);
+      setChartPriceDoge(Math.random() < 0.5 ? Bullish : Bearish);
+    }, (Math.random() * 1500 + 500));
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
@@ -206,7 +219,7 @@ export default function App() {
             <a href="#" className="text-white hover:underline hover:underline-offset-8 hover:transition-all hover:ease-in hover:duration-200 decoration-purple-500">Exchange</a>
             <a href="#" className="text-white hover:underline hover:underline-offset-8 hover:transition-all hover:ease-in hover:duration-200 decoration-purple-500">Trade</a>
           </div>
-          <button className="bg-primary text-white bg-purple-700  font-semibold py-2 px-5 rounded-md">Register</button>
+          <button className="text-white bg-purple-700  font-semibold py-2 px-5 rounded-md">Register</button>
         </nav>
 
         <div className="grid grid-cols-2 items-center z-50">
@@ -265,7 +278,7 @@ export default function App() {
             <div className="col">
               <div className="flex items-center gap-2 mb-2">
                 <b className='text-xl'>Bitcoin</b>
-                <Bullish />
+                {chartPriceBtc}
               </div>
               <p className='text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, atque! Ullam qui quia eum</p>
             </div>
@@ -284,7 +297,7 @@ export default function App() {
             <div className="col">
               <div className="flex items-center gap-2 mb-2">
                 <b className='text-xl'>Etherium</b>
-                <Bearish />
+                {chartPriceEth}
               </div>
               <p className='text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, atque! Ullam qui quia eum</p>
             </div>
@@ -303,7 +316,7 @@ export default function App() {
             <div className="col">
               <div className="flex items-center gap-2 mb-2">
                 <b className='text-xl'>Doge Coin</b>
-                <Bullish />
+                {chartPriceDoge}
               </div>
               <p className='text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, atque! Ullam qui quia eum</p>
             </div>
