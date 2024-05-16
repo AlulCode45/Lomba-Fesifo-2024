@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, ResponsiveContainer } from 'recharts';
 import { AdvancedChart } from 'react-tradingview-embed';
 import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaTwitch, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { TECollapse } from "tw-elements-react";
 
 const bitcoin = [
   {
@@ -182,6 +183,16 @@ export function Bearish() {
 }
 
 export default function App() {
+  const [activeElement, setActiveElement] = useState("");
+
+  const handleClick = (value) => {
+    if (value === activeElement) {
+      setActiveElement("");
+    } else {
+      setActiveElement(value);
+    }
+  };
+
   return (
     <>
       <header className="container mx-auto px-auto">
@@ -246,7 +257,7 @@ export default function App() {
       <main className="container mx-auto">
         <section className="grid grid-cols-3 gap-5">
           <div className="col card-header grid grid-cols-2 items-center relative">
-            <a href="" className='absolute bg-white p-3 bg-opacity-10 text-white top-3 right-3 rounded-full'>
+            <a href="" className='absolute bg-gray-400 bg-opacity-30 p-3  text-white top-3 right-3 rounded-full'>
               <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2.6665 1C2.6665 0.447715 3.11422 0 3.6665 0L11.6665 5.36442e-07C12.2188 5.36442e-07 12.6665 0.447716 12.6665 1V9C12.6665 9.55229 12.2188 10 11.6665 10C11.1142 10 10.6665 9.55229 10.6665 9V3.41421L2.37361 11.7071C1.98309 12.0976 1.34992 12.0976 0.959397 11.7071C0.568873 11.3166 0.568873 10.6834 0.959397 10.2929L9.25229 2L3.6665 2C3.11422 2 2.6665 1.55228 2.6665 1Z" fill="white" />
               </svg>
@@ -265,7 +276,7 @@ export default function App() {
             </ResponsiveContainer>
           </div>
           <div className="col card-header grid grid-cols-2 items-center relative">
-            <a href="" className='absolute bg-white p-3 bg-opacity-10 text-white top-3 right-3 rounded-full'>
+            <a href="" className='absolute bg-gray-400 bg-opacity-30 p-3  text-white top-3 right-3 rounded-full'>
               <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2.6665 1C2.6665 0.447715 3.11422 0 3.6665 0L11.6665 5.36442e-07C12.2188 5.36442e-07 12.6665 0.447716 12.6665 1V9C12.6665 9.55229 12.2188 10 11.6665 10C11.1142 10 10.6665 9.55229 10.6665 9V3.41421L2.37361 11.7071C1.98309 12.0976 1.34992 12.0976 0.959397 11.7071C0.568873 11.3166 0.568873 10.6834 0.959397 10.2929L9.25229 2L3.6665 2C3.11422 2 2.6665 1.55228 2.6665 1Z" fill="white" />
               </svg>
@@ -284,7 +295,7 @@ export default function App() {
             </ResponsiveContainer>
           </div>
           <div className="col card-header grid grid-cols-2 items-center relative">
-            <a href="" className='absolute bg-white p-3 bg-opacity-10 text-white top-3 right-3 rounded-full'>
+            <a href="" className='absolute bg-gray-400 bg-opacity-30 p-3  text-white top-3 right-3 rounded-full'>
               <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2.6665 1C2.6665 0.447715 3.11422 0 3.6665 0L11.6665 5.36442e-07C12.2188 5.36442e-07 12.6665 0.447716 12.6665 1V9C12.6665 9.55229 12.2188 10 11.6665 10C11.1142 10 10.6665 9.55229 10.6665 9V3.41421L2.37361 11.7071C1.98309 12.0976 1.34992 12.0976 0.959397 11.7071C0.568873 11.3166 0.568873 10.6834 0.959397 10.2929L9.25229 2L3.6665 2C3.11422 2 2.6665 1.55228 2.6665 1Z" fill="white" />
               </svg>
@@ -329,11 +340,254 @@ export default function App() {
             <img src="/assets/Etherium.png" alt="" />
           </div>
         </section>
-
         <section className='mt-40'>
           <AdvancedChart widgetProps={{ "theme": "dark" }} />
         </section>
 
+        <section className='mt-48'>
+          <h2 className='text-center text-2xl font-semibold'>What they say?</h2>
+        </section>
+
+        <section className='mt-48'>
+          <div className="grid grid-cols-3 bg-[#200049] p-14 rounded-lg gap-12 backdrop-filter backdrop-blur-lg bg-opacity-40 relative">
+            <div className="p-10">
+              <h3 className='text-xl font-bold'><span className='text-[3rem]'>$19 </span>/Month</h3>
+              <h4 className='text-xl font-semibold mt-5'>Starter</h4>
+              <p className='my-2'>Unleash the power of automation.</p>
+              <ul className='flex flex-col gap-2'>
+                <li className='flex gap-2 items-center'>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="#ffff"
+                    className="bg-[#5243C2] rounded-full p-1"
+                    data-name="Flat Color"
+                    viewBox="0 0 0.9 0.9"
+                  >
+                    <path
+                      fill="#ffff"
+                      d="M.375.675A.037.037 0 01.348.664L.16.476A.037.037 0 01.213.423l.161.161.311-.311a.037.037 0 11.053.053L.401.663a.037.037 0 01-.026.012"
+                    ></path>
+                  </svg>
+
+                  Multi-step Zaps</li>
+                <li className='flex gap-2 items-center'>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="#ffff"
+                    className="bg-[#5243C2] rounded-full p-1"
+                    data-name="Flat Color"
+                    viewBox="0 0 0.9 0.9"
+                  >
+                    <path
+                      fill="#ffff"
+                      d="M.375.675A.037.037 0 01.348.664L.16.476A.037.037 0 01.213.423l.161.161.311-.311a.037.037 0 11.053.053L.401.663a.037.037 0 01-.026.012"
+                    ></path>
+                  </svg>
+
+                  Multi-step Zaps</li>
+                <li className='flex gap-2 items-center'>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="#ffff"
+                    className="bg-[#5243C2] rounded-full p-1"
+                    data-name="Flat Color"
+                    viewBox="0 0 0.9 0.9"
+                  >
+                    <path
+                      fill="#ffff"
+                      d="M.375.675A.037.037 0 01.348.664L.16.476A.037.037 0 01.213.423l.161.161.311-.311a.037.037 0 11.053.053L.401.663a.037.037 0 01-.026.012"
+                    ></path>
+                  </svg>
+
+                  Multi-step Zaps</li>
+              </ul>
+
+              <button className='bg-gray-500 bg-opacity-25 font-semibold  mt-16 w-full p-3 rounded-full'>Chose Plan</button>
+            </div>
+            <div className="p-10">
+              <h3 className='text-xl font-bold'><span className='text-[3rem]'>$19 </span>/Month</h3>
+              <h4 className='text-xl font-semibold mt-5'>Starter</h4>
+              <p className='my-2'>Unleash the power of automation.</p>
+              <ul className='flex flex-col gap-2'>
+                <li className='flex gap-2 items-center'>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="#ffff"
+                    className="bg-[#5243C2] rounded-full p-1"
+                    data-name="Flat Color"
+                    viewBox="0 0 0.9 0.9"
+                  >
+                    <path
+                      fill="#ffff"
+                      d="M.375.675A.037.037 0 01.348.664L.16.476A.037.037 0 01.213.423l.161.161.311-.311a.037.037 0 11.053.053L.401.663a.037.037 0 01-.026.012"
+                    ></path>
+                  </svg>
+
+                  Multi-step Zaps</li>
+                <li className='flex gap-2 items-center'>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="#ffff"
+                    className="bg-[#5243C2] rounded-full p-1"
+                    data-name="Flat Color"
+                    viewBox="0 0 0.9 0.9"
+                  >
+                    <path
+                      fill="#ffff"
+                      d="M.375.675A.037.037 0 01.348.664L.16.476A.037.037 0 01.213.423l.161.161.311-.311a.037.037 0 11.053.053L.401.663a.037.037 0 01-.026.012"
+                    ></path>
+                  </svg>
+
+                  Multi-step Zaps</li>
+                <li className='flex gap-2 items-center'>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="#ffff"
+                    className="bg-[#5243C2] rounded-full p-1"
+                    data-name="Flat Color"
+                    viewBox="0 0 0.9 0.9"
+                  >
+                    <path
+                      fill="#ffff"
+                      d="M.375.675A.037.037 0 01.348.664L.16.476A.037.037 0 01.213.423l.161.161.311-.311a.037.037 0 11.053.053L.401.663a.037.037 0 01-.026.012"
+                    ></path>
+                  </svg>
+
+                  Multi-step Zaps</li>
+              </ul>
+
+              <button className='bg-gray-500 bg-opacity-25 font-semibold  mt-16 w-full p-3 rounded-full'>Chose Plan</button>
+            </div>
+            <div className="p-10 py-20 bg-[#231D4F] rounded-xl backdrop-filter backdrop-blur-2xl bg-opacity-80 relative shadow-xl shadow-purple-400 -mt-24">
+              <div className="bg-purple-500 bg-opacity-20 font-semibold p-3 text-sm rounded-tr-xl rounded-bl-xl text-white w-1/2 text-center right-0 absolute top-0">MOST POPULAR</div>
+              <h3 className='text-xl font-bold mt-7'><span className='text-[3rem]'>$19 </span>/Month</h3>
+              <h4 className='text-xl font-semibold mt-5'>Starter</h4>
+              <p className='my-2'>Automation plus enterprise-grade features.</p>
+              <ul className='flex flex-col gap-2'>
+                <li className='flex gap-2 items-center'>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="#ffff"
+                    className="bg-[#5243C2] rounded-full p-1"
+                    data-name="Flat Color"
+                    viewBox="0 0 0.9 0.9"
+                  >
+                    <path
+                      fill="#ffff"
+                      d="M.375.675A.037.037 0 01.348.664L.16.476A.037.037 0 01.213.423l.161.161.311-.311a.037.037 0 11.053.053L.401.663a.037.037 0 01-.026.012"
+                    ></path>
+                  </svg>
+
+                  Multi-step Zaps</li>
+                <li className='flex gap-2 items-center'>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="#ffff"
+                    className="bg-[#5243C2] rounded-full p-1"
+                    data-name="Flat Color"
+                    viewBox="0 0 0.9 0.9"
+                  >
+                    <path
+                      fill="#ffff"
+                      d="M.375.675A.037.037 0 01.348.664L.16.476A.037.037 0 01.213.423l.161.161.311-.311a.037.037 0 11.053.053L.401.663a.037.037 0 01-.026.012"
+                    ></path>
+                  </svg>
+
+                  Multi-step Zaps</li>
+                <li className='flex gap-2 items-center'>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="#ffff"
+                    className="bg-[#5243C2] rounded-full p-1"
+                    data-name="Flat Color"
+                    viewBox="0 0 0.9 0.9"
+                  >
+                    <path
+                      fill="#ffff"
+                      d="M.375.675A.037.037 0 01.348.664L.16.476A.037.037 0 01.213.423l.161.161.311-.311a.037.037 0 11.053.053L.401.663a.037.037 0 01-.026.012"
+                    ></path>
+                  </svg>
+
+                  Multi-step Zaps</li>
+              </ul>
+              <button className='bg-purple-400 bg-opacity-90 font-semibold  p-3 rounded-full mt-16 w-full'>Choose Plan</button>
+            </div>
+
+          </div>
+        </section>
+
+        <section className='mt-24'>
+          <div id="accordionExample">
+            <div className="rounded-t-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+              <h2 className="mb-0" id="headingOne">
+                <button
+                  className={`${activeElement === "element1" &&
+                    `text-primary [box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:!text-primary-400 dark:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]`
+                    } group relative flex w-full items-center rounded-t-[15px] border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white`}
+                  type="button"
+                  onClick={() => handleClick("element1")}
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
+                  Accordion Item #1
+                  <span
+                    className={`${activeElement === "element1"
+                      ? `rotate-[-180deg] -mr-1`
+                      : `rotate-0 fill-[#212529]  dark:fill-white`
+                      } ml-auto h-5 w-5 shrink-0 fill-[#336dec] transition-transform duration-200 ease-in-out motion-reduce:transition-none dark:fill-blue-300`}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="h-6 w-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </h2>
+              <TECollapse
+                show={activeElement === "element1"}
+                className="!mt-0 !rounded-b-none !shadow-none"
+              >
+                <div className="px-5 py-4">
+                  <strong>This is the first item's accordion body.</strong> Lorem
+                  ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu
+                  rhoncus purus, vitae tincidunt nibh. Vivamus elementum egestas
+                  ligula in varius. Proin ac erat pretium, ultricies leo at, cursus
+                  ante. Pellentesque at odio euismod, mattis urna ac, accumsan
+                  metus. Nam nisi leo, malesuada vitae pretium et, laoreet at lorem.
+                  Curabitur non sollicitudin neque.
+                </div>
+              </TECollapse>
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer>
@@ -364,25 +618,25 @@ export default function App() {
                 </div>
                 <div class="contact flex gap-3 ml-2">
                   <a href="#">
-                    <FaFacebook className='w-7 h-7 bg-purple-800 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                    <FaFacebook className='w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
                   </a>
                   <a href="#">
-                    <FaTwitter className='w-7 h-7 bg-purple-800 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                    <FaTwitter className='w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
                   </a>
                   <a href="#">
-                    <FaYoutube className='w-7 h-7 bg-purple-800 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                    <FaYoutube className='w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
                   </a>
                   <a href="#">
-                    <FaInstagram className='w-7 h-7 bg-purple-800 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                    <FaInstagram className='w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
                   </a>
                   <a href="#">
-                    <FaLinkedin className='w-7 h-7 bg-purple-800 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                    <FaLinkedin className='w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
                   </a>
                   <a href="#">
-                    <FaGithub className='w-7 h-7 bg-purple-800 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                    <FaGithub className='w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
                   </a>
                   <a href="#">
-                    <FaTwitch className='w-7 h-7 bg-purple-800 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                    <FaTwitch className='w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
                   </a>
                 </div>
               </div>
@@ -447,6 +701,7 @@ export default function App() {
 
       <div className="glow-decorator1 -z-10"></div>
       <div className="glow-decorator2 -z-10"></div>
+      <div className="glow-decorator3 -z-10"></div>
     </>
   )
 }
