@@ -203,7 +203,7 @@ export default function App() {
       setChartPriceDoge(Math.random() < 0.5 ? Bullish : Bearish);
     }, (Math.random() * 1500 + 500));
 
-    return () => clearInterval(interval);
+    clearInterval(interval);
   }, []);
 
   return (
