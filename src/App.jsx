@@ -4,189 +4,11 @@ import { LineChart, Line, ResponsiveContainer } from 'recharts';
 import { AdvancedChart } from 'react-tradingview-embed';
 import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaTwitch, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { TECollapse } from "tw-elements-react";
+import Prices from './Prices';
 
-const bitcoin = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
-const etherium = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
-const doge = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
-
-export function Bullish() {
-  return (
-    <div className="bg-green-700 rounded-full p-1 bg-opacity-65">
-      <svg
-        fill="#000000"
-        width="13px"
-        height="13px"
-        viewBox="0 0 1.2 1.2"
-        id="up"
-        data-name="Flat Color"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          id="primary"
-          d="m0.986 0.464 -0.35 -0.35a0.05 0.05 0 0 0 -0.071 0l-0.35 0.35a0.05 0.05 0 0 0 0.071 0.071L0.55 0.271V1.05a0.05 0.05 0 0 0 0.1 0V0.271l0.265 0.265a0.05 0.05 0 0 0 0.071 0 0.05 0.05 0 0 0 0 -0.071"
-          style={{ fill: "#ffffff" }}
-        />
-      </svg>
-    </div>
-  )
-}
-export function Bearish() {
-  return (
-    <div className="bg-red-700 rounded-full p-1 bg-opacity-65">
-      <svg
-        fill="#000000"
-        width="13px"
-        height="13px"
-        viewBox="0 0 1.2 1.2"
-        id="down"
-        data-name="Flat Color"
-        xmlns="http://www.w3.org/2000/svg"
-        className="icon flat-color"
-      >
-        <path
-          id="primary"
-          d="M0.986 0.664a0.05 0.05 0 0 0 -0.071 0L0.65 0.929V0.15a0.05 0.05 0 0 0 -0.1 0v0.78l-0.265 -0.265a0.05 0.05 0 0 0 -0.071 0.071l0.35 0.35a0.05 0.05 0 0 0 0.071 0l0.35 -0.35a0.05 0.05 0 0 0 0 -0.071"
-          style={{ fill: "#ffffff" }}
-        />
-      </svg>
-    </div>
-  )
-}
 
 export default function App() {
   const [activeElement, setActiveElement] = useState("");
-  const [chartPriceBtc, setChartPriceBtc] = useState(Bullish);
-  const [chartPriceEth, setChartPriceEth] = useState(Bullish);
-  const [chartPriceDoge, setChartPriceDoge] = useState(Bullish);
 
   const handleClick = (value) => {
     if (value === activeElement) {
@@ -196,16 +18,6 @@ export default function App() {
     }
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setChartPriceBtc(Math.random() < 0.5 ? Bullish : Bearish);
-      setChartPriceEth(Math.random() < 0.5 ? Bullish : Bearish);
-      setChartPriceDoge(Math.random() < 0.5 ? Bullish : Bearish);
-    }, (Math.random() * 1500 + 500));
-
-    clearInterval(interval);
-  }, []);
-
   return (
     <>
       <header className="container mx-auto px-auto">
@@ -213,7 +25,7 @@ export default function App() {
           <h1 className="icon-app text-white font-semibold text-3xl">
             Finanza.
           </h1>
-          <div className="flex gap-10" id="app-menu">
+          <div className="hidden gap-10  md:flex" id="app-menu">
             <a href="#" className="text-white hover:underline hover:underline-offset-8 hover:transition-all hover:ease-in hover:duration-200 decoration-purple-500">Home</a>
             <a href="#" className="text-white hover:underline hover:underline-offset-8 hover:transition-all hover:ease-in hover:duration-200 decoration-purple-500">Market</a>
             <a href="#" className="text-white hover:underline hover:underline-offset-8 hover:transition-all hover:ease-in hover:duration-200 decoration-purple-500">Exchange</a>
@@ -222,9 +34,9 @@ export default function App() {
           <button className="text-white bg-purple-700  font-semibold py-2 px-5 rounded-md">Register</button>
         </nav>
 
-        <div className="grid grid-cols-2 items-center z-50">
-          <div className="col">
-            <h1 className="text-white font-black text-[90px] leading-tight">Welcome to Finanza.</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center z-50">
+          <div className="col order-2 md:order-1">
+            <h1 className="text-white font-black text-4xl md:text-[90px] leading-tight">Welcome to Finanza.</h1>
             <p className="text-white">
               Discover Finanza, where finance meets crypto. Empower your journey with real-time insights and
               personalized portfolio
@@ -261,95 +73,40 @@ export default function App() {
               </button>
             </div>
           </div>
-          <div className="col">
+          <div className="col order-1 md:order-2">
             <img src="assets/Hero.png" alt="" />
           </div>
         </div>
       </header>
 
       <main className="container mx-auto">
-        <section className="grid grid-cols-3 gap-5">
-          <div className="col card-header grid grid-cols-2 items-center relative">
-            <a href="" className='absolute bg-gray-400 bg-opacity-30 p-3  text-white top-3 right-3 rounded-full'>
-              <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.6665 1C2.6665 0.447715 3.11422 0 3.6665 0L11.6665 5.36442e-07C12.2188 5.36442e-07 12.6665 0.447716 12.6665 1V9C12.6665 9.55229 12.2188 10 11.6665 10C11.1142 10 10.6665 9.55229 10.6665 9V3.41421L2.37361 11.7071C1.98309 12.0976 1.34992 12.0976 0.959397 11.7071C0.568873 11.3166 0.568873 10.6834 0.959397 10.2929L9.25229 2L3.6665 2C3.11422 2 2.6665 1.55228 2.6665 1Z" fill="white" />
-              </svg>
-            </a>
-            <div className="col">
-              <div className="flex items-center gap-2 mb-2">
-                <b className='text-xl'>Bitcoin</b>
-                {chartPriceBtc}
-              </div>
-              <p className='text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, atque! Ullam qui quia eum</p>
-            </div>
-            <ResponsiveContainer width="100%" height="100%" aspect={1}>
-              <LineChart width={100} height={100} data={bitcoin}>
-                <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
-          <div className="col card-header grid grid-cols-2 items-center relative">
-            <a href="" className='absolute bg-gray-400 bg-opacity-30 p-3  text-white top-3 right-3 rounded-full'>
-              <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.6665 1C2.6665 0.447715 3.11422 0 3.6665 0L11.6665 5.36442e-07C12.2188 5.36442e-07 12.6665 0.447716 12.6665 1V9C12.6665 9.55229 12.2188 10 11.6665 10C11.1142 10 10.6665 9.55229 10.6665 9V3.41421L2.37361 11.7071C1.98309 12.0976 1.34992 12.0976 0.959397 11.7071C0.568873 11.3166 0.568873 10.6834 0.959397 10.2929L9.25229 2L3.6665 2C3.11422 2 2.6665 1.55228 2.6665 1Z" fill="white" />
-              </svg>
-            </a>
-            <div className="col">
-              <div className="flex items-center gap-2 mb-2">
-                <b className='text-xl'>Etherium</b>
-                {chartPriceEth}
-              </div>
-              <p className='text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, atque! Ullam qui quia eum</p>
-            </div>
-            <ResponsiveContainer width="100%" height="100%" aspect={1}>
-              <LineChart width={100} height={100} data={etherium}>
-                <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
-          <div className="col card-header grid grid-cols-2 items-center relative">
-            <a href="" className='absolute bg-gray-400 bg-opacity-30 p-3  text-white top-3 right-3 rounded-full'>
-              <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.6665 1C2.6665 0.447715 3.11422 0 3.6665 0L11.6665 5.36442e-07C12.2188 5.36442e-07 12.6665 0.447716 12.6665 1V9C12.6665 9.55229 12.2188 10 11.6665 10C11.1142 10 10.6665 9.55229 10.6665 9V3.41421L2.37361 11.7071C1.98309 12.0976 1.34992 12.0976 0.959397 11.7071C0.568873 11.3166 0.568873 10.6834 0.959397 10.2929L9.25229 2L3.6665 2C3.11422 2 2.6665 1.55228 2.6665 1Z" fill="white" />
-              </svg>
-            </a>
-            <div className="col">
-              <div className="flex items-center gap-2 mb-2">
-                <b className='text-xl'>Doge Coin</b>
-                {chartPriceDoge}
-              </div>
-              <p className='text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, atque! Ullam qui quia eum</p>
-            </div>
-            <ResponsiveContainer width="100%" height="100%" aspect={1}>
-              <LineChart width={100} height={100} data={doge}>
-                <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
-        </section>
 
-        <section className='grid grid-cols-2 gap-2 items-center'>
+        <Prices />
+
+        <section className='grid grid-cols-1 md:grid-cols-2 gap-2 items-center'>
           <div className="col flex justify-center">
             <img src="/assets/Blockchain.png" alt="" />
           </div>
           <div className="col">
-            <h2 className='text-4xl font-bold mb-4'>#Lorem Ipsum Sit Dolor Amet</h2>
+            <h2 className='text-4xl font-bold mb-4'>Why Invest in Crypto?</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur. Dui aliquam molestie at ut ipsum. Et ultrices pharetra turpis dignissim. Augue id lobortis sed tempor elit sed sagittis libero. Neque at cras massa commodo nibh nisi volutpat at sollicitudin.Neque at cras massa commodo nibh nisi volutpat at sollicitudin.
+
+              Investing in crypto assets can be an alternative to traditional investments. With the increasing growth of the crypto market, investing in crypto can be a good step to diversify a portfolio.
             </p>
             <button className='font-bold mt-5'>Learn More...</button>
           </div>
         </section>
 
-        <section className='grid grid-cols-2 gap-2 items-center'>
-          <div className="col">
-            <h2 className='text-4xl font-bold mb-4'>#Lorem Ipsum Sit Dolor Amet</h2>
+        <section className='grid grid-cols-1 md:grid-cols-2 gap-2 items-center'>
+          <div className="col order-2 md:order-1">
+            <h2 className='text-4xl font-bold mb-4'>what are the advantages of finanza for #FutureAssets?</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur. Dui aliquam molestie at ut ipsum. Et ultrices pharetra turpis dignissim. Augue id lobortis sed tempor elit sed sagittis libero. Neque at cras massa commodo nibh nisi volutpat at sollicitudin.Neque at cras massa commodo nibh nisi volutpat at sollicitudin.
+
+              Finanza offers the best prices in the market and allows you to transact anytime, 24 hours non-stop. Not only that, you will also feel comfortable and safe when buying and selling Bitcoin and other crypto assets.
             </p>
             <button className='font-bold mt-5'>Learn More...</button>
           </div>
-          <div className="col flex justify-center">
+          <div className="col flex justify-center order-1 md:order-2">
             <img src="/assets/Etherium.png" alt="" />
           </div>
         </section>
@@ -362,7 +119,7 @@ export default function App() {
         </section>
 
         <section className='mt-48'>
-          <div className="grid grid-cols-3 bg-[#200049] p-14 rounded-lg gap-12 backdrop-filter backdrop-blur-lg bg-opacity-40 relative">
+          <div className="grid grid-cols-1 md:grid-cols-3 bg-[#200049] p-4 md:p-14 rounded-lg gap-12 backdrop-filter backdrop-blur-lg bg-opacity-40 relative">
             <div className="p-10">
               <h3 className='text-xl font-bold'><span className='text-[3rem]'>$19 </span>/Month</h3>
               <h4 className='text-xl font-semibold mt-5'>Starter</h4>
@@ -483,7 +240,7 @@ export default function App() {
 
               <button className='bg-gray-500 bg-opacity-25 font-semibold  mt-16 w-full p-3 rounded-full'>Chose Plan</button>
             </div>
-            <div className="p-10 py-20 bg-[#231D4F] rounded-xl backdrop-filter backdrop-blur-2xl bg-opacity-80 relative shadow-xl shadow-purple-400 -mt-24">
+            <div className="p-3 md:p-10 py-20 bg-[#231D4F] rounded-xl backdrop-filter backdrop-blur-2xl bg-opacity-80 relative shadow-xl shadow-purple-400 md:-mt-24">
               <div className="bg-purple-500 bg-opacity-20 font-semibold p-3 text-sm rounded-tr-xl rounded-bl-xl text-white w-1/2 text-center right-0 absolute top-0">MOST POPULAR</div>
               <h3 className='text-xl font-bold mt-7'><span className='text-[3rem]'>$19 </span>/Month</h3>
               <h4 className='text-xl font-semibold mt-5'>Starter</h4>
@@ -547,7 +304,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className='mt-24 px-24'>
+        <section className='mt-24 p-0 md:p-20 bg-black bg-opacity-15 rounded-lg backdrop-filter backdrop-blur-lg'>
           <div id="accordionExample">
             <div className="my-4">
               <h2 className="mb-0" id="headingOne">
@@ -555,7 +312,7 @@ export default function App() {
                   className={`${activeElement === "element1" &&
                     `[box-shadow:inset_0_-1px_0_rgba(75,85,99)]`
                     } group relative flex w-full items-center rounded-t-[15px] px-5 py-4 text-left text-base transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none text-white border-b font-bold`} type="button" onClick={() => handleClick("element1")} aria-expanded="true" aria-controls="collapseOne">
-                  Accordion Item #1
+                  What is Cryptocurrency?
                   <span
                     className={`${activeElement === "element1"
                       ? `rotate-[-180deg] -mr-1`
@@ -567,16 +324,103 @@ export default function App() {
               </h2>
               <TECollapse show={activeElement === "element1"} className="!mt-0 !rounded-b-none !shadow-none">
                 <div className="px-5 py-4">
-                  <strong>This is the first item's accordion body.</strong> Lorem
-                  ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu
-                  rhoncus purus, vitae tincidunt nibh. Vivamus elementum egestas
-                  ligula in varius. Proin ac erat pretium, ultricies leo at, cursus
-                  ante. Pellentesque at odio euismod, mattis urna ac, accumsan
-                  metus. Nam nisi leo, malesuada vitae pretium et, laoreet at lorem.
-                  Curabitur non sollicitudin neque.
+                  <strong>Cryptocurrency Explained:</strong> Cryptocurrency is a type of digital or virtual currency that uses cryptography for security. Unlike traditional currencies issued by governments (fiat currencies), cryptocurrencies operate on technology called blockchain, a decentralized system spread across many computers that manages and records transactions. One of the most well-known cryptocurrencies is Bitcoin, but there are thousands of others, each with unique features and uses. Cryptocurrencies offer benefits such as reduced transaction fees, increased privacy, and potential for high returns on investments, but they also come with risks including high volatility and regulatory uncertainty.
                 </div>
               </TECollapse>
             </div>
+
+            <div className="my-4">
+              <h2 className="mb-0" id="headingTwo">
+                <button
+                  className={`${activeElement === "element2" &&
+                    `[box-shadow:inset_0_-1px_0_rgba(75,85,99)]`
+                    } group relative flex w-full items-center px-5 py-4 text-left text-base transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none text-white border-b font-bold`} type="button" onClick={() => handleClick("element2")} aria-expanded="true" aria-controls="collapseTwo">
+                  How Does Blockchain Work?
+                  <span
+                    className={`${activeElement === "element2"
+                      ? `rotate-[-180deg] -mr-1`
+                      : `rotate-0 fill-[#212529]  dark:fill-white`
+                      } ml-auto h-5 w-5 shrink-0 fill-[#336dec] transition-transform duration-200 ease-in-out motion-reduce:transition-none dark:fill-blue-300`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-6 w-6"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                  </span>
+                </button>
+              </h2>
+              <TECollapse show={activeElement === "element2"} className="!mt-0 !rounded-b-none !shadow-none">
+                <div className="px-5 py-4">
+                  <strong>The Mechanics of Blockchain:</strong> A blockchain is a distributed ledger that is completely open to anyone. They have an interesting property: once data has been recorded, it becomes very difficult to change it. Blockchain records transactions in 'blocks' and then links them together in a 'chain' through cryptography. Each block contains a cryptographic hash of the previous block, a timestamp, and transaction data. Due to its design, blockchain is inherently resistant to modification of the data. This provides security and trust without the need for a central authority.
+                </div>
+              </TECollapse>
+            </div>
+
+            <div className="my-4">
+              <h2 className="mb-0" id="headingThree">
+                <button
+                  className={`${activeElement === "element3" &&
+                    `[box-shadow:inset_0_-1px_0_rgba(75,85,99)]`
+                    } group relative flex w-full items-center px-5 py-4 text-left text-base transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none text-white border-b font-bold`} type="button" onClick={() => handleClick("element3")} aria-expanded="true" aria-controls="collapseThree">
+                  Benefits and Risks of Cryptocurrency
+                  <span
+                    className={`${activeElement === "element3"
+                      ? `rotate-[-180deg] -mr-1`
+                      : `rotate-0 fill-[#212529]  dark:fill-white`
+                      } ml-auto h-5 w-5 shrink-0 fill-[#336dec] transition-transform duration-200 ease-in-out motion-reduce:transition-none dark:fill-blue-300`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-6 w-6"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                  </span>
+                </button>
+              </h2>
+              <TECollapse show={activeElement === "element3"} className="!mt-0 !rounded-b-none !shadow-none">
+                <div className="px-5 py-4">
+                  <strong>Pros and Cons:</strong> Cryptocurrency offers numerous benefits, including lower transaction fees compared to traditional online payment methods, enhanced security due to cryptographic protocols, and the ability to operate independently of a central bank. However, cryptocurrencies also pose significant risks. Their values can be extremely volatile, making them a risky investment. Additionally, the lack of regulation and potential for use in illegal activities, such as money laundering, pose challenges. It's crucial for investors to thoroughly research and understand both the potential rewards and risks before investing in cryptocurrencies.
+                </div>
+              </TECollapse>
+            </div>
+
+            <div className="my-4">
+              <h2 className="mb-0" id="headingFour">
+                <button
+                  className={`${activeElement === "element4" &&
+                    `[box-shadow:inset_0_-1px_0_rgba(75,85,99)]`
+                    } group relative flex w-full items-center px-5 py-4 text-left text-base transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none text-white border-b font-bold`} type="button" onClick={() => handleClick("element4")} aria-expanded="true" aria-controls="collapseFour">
+                  Popular Cryptocurrencies
+                  <span
+                    className={`${activeElement === "element4"
+                      ? `rotate-[-180deg] -mr-1`
+                      : `rotate-0 fill-[#212529]  dark:fill-white`
+                      } ml-auto h-5 w-5 shrink-0 fill-[#336dec] transition-transform duration-200 ease-in-out motion-reduce:transition-none dark:fill-blue-300`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-6 w-6"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                  </span>
+                </button>
+              </h2>
+              <TECollapse show={activeElement === "element4"} className="!mt-0 !rounded-b-none !shadow-none">
+                <div className="px-5 py-4">
+                  <strong>Notable Cryptocurrencies:</strong> While Bitcoin is the most well-known and widely used cryptocurrency, there are many others that have gained popularity. Ethereum is notable for its smart contract functionality, allowing for decentralized applications. Ripple (XRP) is known for its use in real-time gross settlement systems, currency exchange, and remittance networks. Litecoin, often considered the silver to Bitcoin's gold, offers faster transaction times and a different hashing algorithm. Each of these cryptocurrencies has unique features and uses, contributing to the diversity of the cryptocurrency ecosystem.
+                </div>
+              </TECollapse>
+            </div>
+
+            <div className="my-4">
+              <h2 className="mb-0" id="headingFive">
+                <button
+                  className={`${activeElement === "element5" &&
+                    `[box-shadow:inset_0_-1px_0_rgba(75,85,99)]`
+                    } group relative flex w-full items-center px-5 py-4 text-left text-base transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none text-white border-b font-bold`} type="button" onClick={() => handleClick("element5")} aria-expanded="true" aria-controls="collapseFive">
+                  Future of Cryptocurrency
+                  <span
+                    className={`${activeElement === "element5"
+                      ? `rotate-[-180deg] -mr-1`
+                      : `rotate-0 fill-[#212529]  dark:fill-white`
+                      } ml-auto h-5 w-5 shrink-0 fill-[#336dec] transition-transform duration-200 ease-in-out motion-reduce:transition-none dark:fill-blue-300`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-6 w-6"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
+                  </span>
+                </button>
+              </h2>
+              <TECollapse show={activeElement === "element5"} className="!mt-0 !rounded-b-none !shadow-none">
+                <div className="px-5 py-4">
+                  <strong>Looking Ahead:</strong> The future of cryptocurrency is filled with potential but also uncertainty. Innovations such as decentralized finance (DeFi), non-fungible tokens (NFTs), and improvements in blockchain technology could further revolutionize the financial world. Governments and regulatory bodies are increasingly looking at ways to regulate and integrate cryptocurrencies into the traditional financial system. While challenges such as regulatory hurdles, security concerns, and market volatility remain, the continued development and adoption of cryptocurrency suggest it will play a significant role in the future of finance.
+                </div>
+              </TECollapse>
+            </div>
+
           </div>
         </section>
       </main >
@@ -584,8 +428,8 @@ export default function App() {
       <footer>
         <div class="text-white py-10">
           <div class="container mx-auto">
-            <div class="flex">
-              <div class="w-7/12">
+            <div class="md:flex">
+              <div class="w-full md:w-7/12">
                 <h1 class="font-bold text-3xl">Finanza.</h1>
                 <p class="text-sm">
                   Smartly manage your finances and crypto investment
@@ -593,13 +437,13 @@ export default function App() {
                 <div class="addres">
                   <h4 class="mt-4 font-bold">Jakarta</h4>
                   <p class="text-sm">
-                    Gedung Millennium Centennial Center Lt.2, Jl. Jend. Sudirman No.
-                    Kav 25, Kuningan Jakarta Selatan 2920.
+                    Millennium Centennial Center Building Lt.2, Jl. Jend.
+                    Sudirman No. Kav 25, Kuningan South Jakarta 2920.
                   </p>
                   <h4 class="mt-4 font-bold">Bali</h4>
                   <p class="text-sm">
-                    Jl. Sunset Road No. 48 a-b, Legian, Kuta, Kabupaten Badung, Bali
-                    8036l.
+                    Jl. Sunset Road No. 48 a-b, Legian, Kuta, Kabupaten Badung,
+                    Bali 8036l.
                   </p>
 
                   <p class="text-sm my-4">
@@ -609,81 +453,122 @@ export default function App() {
                 </div>
                 <div class="contact flex gap-3 ml-2">
                   <a href="#">
-                    <FaFacebook className='w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                    <FaFacebook className="w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600" />
                   </a>
                   <a href="#">
-                    <FaTwitter className='w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                    <FaTwitter className="w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600" />
                   </a>
                   <a href="#">
-                    <FaYoutube className='w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                    <FaYoutube className="w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600" />
                   </a>
                   <a href="#">
-                    <FaInstagram className='w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                    <FaInstagram className="w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600" />
                   </a>
                   <a href="#">
-                    <FaLinkedin className='w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                    <FaLinkedin className="w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600" />
                   </a>
                   <a href="#">
-                    <FaGithub className='w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                    <FaGithub className="w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600" />
                   </a>
                   <a href="#">
-                    <FaTwitch className='w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600' />
+                    <FaTwitch className="w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600" />
                   </a>
                 </div>
               </div>
-              <div class="footer-menu flex mt-2 gap-8 w-5/12">
-                <div class="p-4">
+              <div class="md:flex mt-2 gap-8 w-full md:w-5/12">
+                <div class="py-4">
                   <ul class="text-sm grid gap-2">
                     <li>
-                      <a href="#" class="text-[16px] hover:underline">Perusahaan</a>
+                      <a href="#" class="text-[16px] hover:underline">
+                        Company
+                      </a>
                     </li>
-                    <li><a href="#" class="hover:underline">Hubungi kami</a></li>
                     <li>
-                      <a href="#" class="hover:underline">Program afiliasi</a>
+                      <a href="#" class="text-[16px] hover:underline">
+                        About Us
+                      </a>
                     </li>
-
-                    <li><a href="#" class="hover:underline">Bantuan</a></li>
+                    <li>
+                      <a href="#" class="hover:underline">
+                        Contact Us
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" class="hover:underline">
+                        Affiliate Program
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" class="hover:underline">
+                        Help
+                      </a>
+                    </li>
                   </ul>
                 </div>
-                <div class="p-4">
+                <div class="py-4">
                   <ul class="text-sm grid gap-2">
                     <li>
-                      <a href="#" class="text-[16px] hover:underline">Produk</a>
+                      <a href="#" class="text-[16px] hover:underline">
+                        Product
+                      </a>
                     </li>
-                    <li><a href="# " class="hover:underline">Academy</a></li>
-                    <li><a href="#" class="hover:underline">OTC</a></li>
+                    <li>
+                      <a href="# " class="hover:underline">
+                        Academy
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" class="hover:underline">
+                        OTC
+                      </a>
+                    </li>
                   </ul>
                 </div>
-                <div class="p-4">
+                <div class="py-4">
                   <ul class="text-sm grid gap-2">
                     <li>
-                      <a href="#" class="text-[16px] hover:underline">Informasi</a>
+                      <a href="#" class="text-[16px] hover:underline">
+                        Information
+                      </a>
                     </li>
                     <li>
-                      <a href="#" class="hover:underline">Syarat dan ketentuan</a>
+                      <a href="#" class="hover:underline">
+                        Terms and Conditions
+                      </a>
                     </li>
                     <li>
-                      <a href="#" class="hover:underline">Kebijakan privasi</a>
+                      <a href="#" class="hover:underline">
+                        Privacy policy
+                      </a>
                     </li>
-                    <li><a href="#" class="hover:underline">API</a></li>
-                    <li><a href="#" class="hover:underline">Blog</a></li>
+                    <li>
+                      <a href="#" class="hover:underline">
+                        API
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" class="hover:underline">
+                        Blog
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </div>
             </div>
             <div class="footer-title">
-              <p class="text-sm w-[900px] my-6">
-                Perdagangan aset kripto merupakan aktivitas berisiko tinggi. Harga
-                aset kripto sangat fluktuatif, di mana harga dapat berubah secara
-                signifikan dari waktu ke waktu Harap lakukan riset sebelum membuat
-                keputusan untuk membeli atau menjual aset kripto.
-                <span class="font-bold">Finanza</span> tidak memaksa pengguna untuk
-                membeli, menjual, atau menjadikan aset kripto sebagai investasi atau
-                aksi untuk mencari keuntungan. Semua keputusan dalam bertransaksi
-                aset kripto merupakan keputusan independen oleh pengguna.
+              <p class="text-sm  my-6">
+                Trading cryptocurrencies is a high-risk activity. Cryptocurrency
+                prices are highly volatile, where prices can change
+                significantly over time. Please do your research before making a
+                decision to buy or sell crypto assets.
+                <span class="font-bold">Finanza</span> does not force users to
+                buy, sell, or make crypto assets as an investment or action for
+                profit. All decisions in crypto asset transactions are the
+                decision of the user.
               </p>
-              <div class="text-xs">
-                Copyright @ 2024 PT Finanza Investama Indonesia. All Right Reserved.
+              <div class="text-sm">
+                Copyright @ 2024 PT Finanza Investama Indonesia. All Right
+                Reserved.
               </div>
             </div>
           </div>

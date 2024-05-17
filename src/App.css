@@ -14,6 +14,7 @@
 
 body {
   scroll-behavior: smooth;
+  max-width: 100%;
   overflow-x: hidden;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(to bottom,
@@ -67,7 +68,7 @@ body {
   left: -234px;
   opacity: .40;
   position: absolute;
-  top: 3000px;
+  top: 3200px;
   width: 800px;
   z-index: 0;
 }
