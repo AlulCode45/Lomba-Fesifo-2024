@@ -130,11 +130,7 @@ export default function App() {
         <Prices />
         <section className='grid grid-cols-1 lg:grid-cols-2 gap-2 items-center'>
           <div className="col flex justify-center">
-            {/* <img src="/assets/Blockchain.png" alt="" /> */}
-            <div className="flex flex-col relative justify-center items-center">
-              <img src="/assets/BlockchainHead.png" alt="" className='w-28 h-2w-28 top-24 lg:w-32 lg:h-32 absolute  lg:top-20 animate-bounce' />
-              <img src="/assets/BlockchainBody.png" alt="" className='w-full' />
-            </div>
+            <img src="/assets/Blockchain.png" alt="" />
           </div>
           <div className="col">
             <h2 className='text-4xl font-bold mb-4'>Why Invest in Crypto?</h2>
@@ -160,12 +156,8 @@ export default function App() {
             </p>
             <Content2 />
           </div>
-          <div className="col flex justify-center order-1 lg:order-2 mt-32 lg:mt-0">
-            {/* <img src="/assets/Etherium.png" alt="" /> */}
-            <div className="flex flex-col relative justify-center items-center ">
-              <img src="/assets/EtheriumHead.png" alt="" className='w-24 h-40 absolute top-10 animate-bounce' />
-              <img src="/assets/EtheriumBody.png" alt="" />
-            </div>
+          <div className="col flex justify-center order-1 md:order-2">
+            <img src="/assets/Etherium.png" alt="" />
           </div>
         </section>
         <section className='mt-32'>
@@ -174,8 +166,8 @@ export default function App() {
 
         <section className='mt-32'>
           <h2 className='text-center text-3xl font-semibold mb-16'>Pricing</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 bg-[#200049] p-4 lg:p-14 rounded-lg gap-12 backdrop-filter backdrop-blur-lg bg-opacity-40 relative items-center">
-            <div className="p-10 lg:hover:-mt-10 transition-all ease-in">
+          <div className="grid grid-cols-1 md:grid-cols-3 bg-[#200049] p-4 md:p-14 rounded-lg gap-12 backdrop-filter backdrop-blur-lg bg-opacity-40 relative items-center">
+            <div className="p-10 hover:-mt-10 transition-all ease-in">
               <h3 className='text-xl font-bold'><span className='text-[3rem]'>$9.99 </span>/Month</h3>
               <h4 className='text-xl font-semibold mt-5'>Bronze package</h4>
               <p className='my-2'>Benefits :</p>
@@ -235,7 +227,7 @@ export default function App() {
 
               <button className='bg-gray-500  hover:bg-main hover:border-main transition-all ease-in duration-100 bg-opacity-25 font-semibold  mt-16 w-full p-3 rounded-full'>Chose Plan</button>
             </div>
-            <div className="p-10 lg:hover:-mt-10 transition-all ease-in">
+            <div className="p-10 hover:-mt-10 transition-all ease-in">
               <h3 className='text-xl font-bold'><span className='text-[3rem]'>$19.9 </span>/Month</h3>
               <h4 className='text-xl font-semibold mt-5'>Silver package</h4>
               <p className='my-2'>Benefits :</p>
