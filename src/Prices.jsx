@@ -92,90 +92,90 @@ const bitcoin = [
 const etherium = [
     {
         name: 'Page A',
-        uv: 4000,
-        pv: 2400,
-        amt: 2400,
-    },
-    {
-        name: 'Page B',
-        uv: 3000,
-        pv: 1398,
-        amt: 2210,
-    },
-    {
-        name: 'Page C',
-        uv: 2000,
-        pv: 9800,
-        amt: 2290,
-    },
-    {
-        name: 'Page D',
-        uv: 2780,
-        pv: 3908,
-        amt: 2000,
-    },
-    {
-        name: 'Page E',
-        uv: 1890,
-        pv: 4800,
-        amt: 2181,
-    },
-    {
-        name: 'Page F',
-        uv: 2390,
-        pv: 3800,
+        uv: 1450,
+        pv: 7600,
         amt: 2500,
     },
     {
+        name: 'Page B',
+        uv: 2950,
+        pv: 1200,
+        amt: 3050,
+    },
+    {
+        name: 'Page C',
+        uv: 3950,
+        pv: 8900,
+        amt: 3300,
+    },
+    {
+        name: 'Page D',
+        uv: 1850,
+        pv: 4200,
+        amt: 2700,
+    },
+    {
+        name: 'Page E',
+        uv: 4500,
+        pv: 5300,
+        amt: 4100,
+    },
+    {
+        name: 'Page F',
+        uv: 2700,
+        pv: 3100,
+        amt: 2000,
+    },
+    {
         name: 'Page G',
-        uv: 3490,
-        pv: 4300,
-        amt: 2100,
+        uv: 3850,
+        pv: 8100,
+        amt: 3750,
     },
 ];
 const doge = [
     {
         name: 'Page A',
-        uv: 4000,
-        pv: 2400,
-        amt: 2400,
+        uv: 2350,
+        pv: 1500,
+        amt: 3200,
     },
     {
         name: 'Page B',
-        uv: 3000,
-        pv: 1398,
-        amt: 2210,
+        uv: 4700,
+        pv: 6300,
+        amt: 2100,
     },
     {
         name: 'Page C',
-        uv: 2000,
-        pv: 9800,
-        amt: 2290,
+        uv: 1950,
+        pv: 3400,
+        amt: 2800,
     },
     {
         name: 'Page D',
-        uv: 2780,
-        pv: 3908,
-        amt: 2000,
+        uv: 3400,
+        pv: 4200,
+        amt: 2300,
     },
     {
         name: 'Page E',
-        uv: 1890,
-        pv: 4800,
-        amt: 2181,
+        uv: 1650,
+        pv: 2900,
+        amt: 3600,
     },
     {
         name: 'Page F',
-        uv: 2390,
-        pv: 3800,
-        amt: 2500,
+        uv: 2950,
+        pv: 7800,
+        amt: 2600,
     },
     {
         name: 'Page G',
-        uv: 3490,
-        pv: 4300,
-        amt: 2100,
-    },
+        uv: 4000,
+        pv: 5200,
+        amt: 1900,
+    }
 ];
 
 export default function Prices() {
@@ -209,7 +209,7 @@ export default function Prices() {
                         <b className='text-xl'>Bitcoin</b>
                         {chartPriceBtc}
                     </div>
-                    <p className='text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, atque! Ullam qui quia eum</p>
+                    <p className='text-sm'>The first decentralized digital currency, created in 2009 by Satoshi Nakamoto.</p>
                 </div>
                 <ResponsiveContainer width="100%" height="100%" aspect={1}>
                     <LineChart width={100} height={100} data={bitcoin}>
@@ -228,7 +228,7 @@ export default function Prices() {
                         <b className='text-xl'>Etherium</b>
                         {chartPriceEth}
                     </div>
-                    <p className='text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, atque! Ullam qui quia eum</p>
+                    <p className='text-sm'>Blockchain platform enabling decentralized application development through smart contracts.</p>
                 </div>
                 <ResponsiveContainer width="100%" height="100%" aspect={1}>
                     <LineChart width={100} height={100} data={etherium}>
@@ -247,7 +247,7 @@ export default function Prices() {
                         <b className='text-xl'>Doge Coin</b>
                         {chartPriceDoge}
                     </div>
-                    <p className='text-sm'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, atque! Ullam qui quia eum</p>
+                    <p className='text-sm'>Cryptocurrency born from the "Doge" meme in 2013 for tipping and small transactions.</p>
                 </div>
                 <ResponsiveContainer width="100%" height="100%" aspect={1}>
                     <LineChart width={100} height={100} data={doge}>

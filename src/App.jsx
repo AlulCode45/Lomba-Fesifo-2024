@@ -87,8 +87,8 @@ export default function App() {
               personalized portfolio
               management. Unlock the potential of crypto finance with us.
             </p>
-            <div className="flex flex-col lg:flex-row gap-5 lg:gap-8 mt-4">
-              <button className="border border-white rounded-full py-3 px-7 text-white font-semibold hover:bg-main hover:border-main transition-all ease-in duration-100  hover:scale-105">
+            <div className="flex flex-col md:flex-row gap-5 md:gap-8 mt-4">
+              <button className="border border-white rounded-full py-3 px-7 text-white font-semibold hover:bg-main hover:border-main transition-all ease-in duration-100">
                 Invest Now
               </button>
               <button type="button" className="flex items-center justify-center lg:w-44 w-full text-white bg-black rounded-lg h-14 border border-white hover:scale-105 transition-all ease-in">
