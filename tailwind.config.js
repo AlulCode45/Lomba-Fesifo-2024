@@ -6,7 +6,11 @@ module.exports = {
     "./node_modules/tw-elements-react/dist/js/**/*.js"
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "main": "#7E22CE"
+      }
+    },
   },
   darkMode: "class",
   plugins: [require("tw-elements-react/dist/plugin.cjs")]

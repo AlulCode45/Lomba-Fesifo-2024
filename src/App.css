@@ -73,6 +73,16 @@ body {
   z-index: 0;
 }
 
+@media only screen and (max-width: 600px) {
+  .glow-decorator2 {
+    width: 100vw;
+    right: 0;
+  }
+
+  .glow-decorator3 {
+    width: 100vw;
+  }
+}
 
 .card-header {
   background: rgba(255, 255, 255, 0.1);
