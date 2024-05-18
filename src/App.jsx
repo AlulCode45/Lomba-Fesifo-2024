@@ -121,9 +121,9 @@ export default function App() {
         <section className='mt-48'>
           <div className="grid grid-cols-1 md:grid-cols-3 bg-[#200049] p-4 md:p-14 rounded-lg gap-12 backdrop-filter backdrop-blur-lg bg-opacity-40 relative">
             <div className="p-10">
-              <h3 className='text-xl font-bold'><span className='text-[3rem]'>$19 </span>/Month</h3>
-              <h4 className='text-xl font-semibold mt-5'>Starter</h4>
-              <p className='my-2'>Unleash the power of automation.</p>
+              <h3 className='text-xl font-bold'><span className='text-[3rem]'>$9.99 </span>/Month</h3>
+              <h4 className='text-xl font-semibold mt-5'>Bronze package</h4>
+              <p className='my-2'>benefits:</p>
               <ul className='flex flex-col gap-2'>
                 <li className='flex gap-2 items-center'>
                   <svg
@@ -141,7 +141,7 @@ export default function App() {
                     ></path>
                   </svg>
 
-                  Multi-step Zaps</li>
+                  Access to basic trading platform.</li>
                 <li className='flex gap-2 items-center'>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -158,7 +158,7 @@ export default function App() {
                     ></path>
                   </svg>
 
-                  Multi-step Zaps</li>
+                  Real-time market updates.</li>
                 <li className='flex gap-2 items-center'>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -175,15 +175,15 @@ export default function App() {
                     ></path>
                   </svg>
 
-                  Multi-step Zaps</li>
+                 Basic technical analysis.</li>
               </ul>
 
               <button className='bg-gray-500 bg-opacity-25 font-semibold  mt-16 w-full p-3 rounded-full'>Chose Plan</button>
             </div>
             <div className="p-10">
-              <h3 className='text-xl font-bold'><span className='text-[3rem]'>$19 </span>/Month</h3>
-              <h4 className='text-xl font-semibold mt-5'>Starter</h4>
-              <p className='my-2'>Unleash the power of automation.</p>
+              <h3 className='text-xl font-bold'><span className='text-[3rem]'>$19.9 </span>/Month</h3>
+              <h4 className='text-xl font-semibold mt-5'>Silver package</h4>
+              <p className='my-2'>Benefits:</p>
               <ul className='flex flex-col gap-2'>
                 <li className='flex gap-2 items-center'>
                   <svg
@@ -201,7 +201,7 @@ export default function App() {
                     ></path>
                   </svg>
 
-                  Multi-step Zaps</li>
+                  All features from the Bronze package.</li>
                 <li className='flex gap-2 items-center'>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -218,7 +218,7 @@ export default function App() {
                     ></path>
                   </svg>
 
-                  Multi-step Zaps</li>
+                  Access to more trading pairs.</li>
                 <li className='flex gap-2 items-center'>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -235,16 +235,33 @@ export default function App() {
                     ></path>
                   </svg>
 
-                  Multi-step Zaps</li>
+                  Trading signals and recommendations.</li>
+                 <li className='flex gap-2 items-center'>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="#ffff"
+                    className="bg-[#5243C2] rounded-full p-1"
+                    data-name="Flat Color"
+                    viewBox="0 0 0.9 0.9"
+                  >
+                    <path
+                      fill="#ffff"
+                      d="M.375.675A.037.037 0 01.348.664L.16.476A.037.037 0 01.213.423l.161.161.311-.311a.037.037 0 11.053.053L.401.663a.037.037 0 01-.026.012"
+                    ></path>
+                  </svg>
+
+                  Customer support via email and live chat.</li>
               </ul>
 
               <button className='bg-gray-500 bg-opacity-25 font-semibold  mt-16 w-full p-3 rounded-full'>Chose Plan</button>
             </div>
             <div className="p-3 md:p-10 py-20 bg-[#231D4F] rounded-xl backdrop-filter backdrop-blur-2xl bg-opacity-80 relative shadow-xl shadow-purple-400 md:-mt-24">
               <div className="bg-purple-500 bg-opacity-20 font-semibold p-3 text-sm rounded-tr-xl rounded-bl-xl text-white w-1/2 text-center right-0 absolute top-0">MOST POPULAR</div>
-              <h3 className='text-xl font-bold mt-7'><span className='text-[3rem]'>$19 </span>/Month</h3>
-              <h4 className='text-xl font-semibold mt-5'>Starter</h4>
-              <p className='my-2'>Automation plus enterprise-grade features.</p>
+              <h3 className='text-xl font-bold mt-7'><span className='text-[3rem]'>$29.9 </span>/Month</h3>
+              <h4 className='text-xl font-semibold mt-5'>Gold package</h4>
+              <p className='my-2'>Benefits:</p>
               <ul className='flex flex-col gap-2'>
                 <li className='flex gap-2 items-center'>
                   <svg
@@ -262,7 +279,7 @@ export default function App() {
                     ></path>
                   </svg>
 
-                  Multi-step Zaps</li>
+                  All features from the Silver package.</li>
                 <li className='flex gap-2 items-center'>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -279,7 +296,7 @@ export default function App() {
                     ></path>
                   </svg>
 
-                  Multi-step Zaps</li>
+                 Advanced technical analysis and charting tools.</li>
                 <li className='flex gap-2 items-center'>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -296,7 +313,75 @@ export default function App() {
                     ></path>
                   </svg>
 
-                  Multi-step Zaps</li>
+                 Exclusive training and webinars conducted by industry experts.</li>
+                <li className='flex gap-2 items-center'>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="#ffff"
+                    className="bg-[#5243C2] rounded-full p-1"
+                    data-name="Flat Color"
+                    viewBox="0 0 0.9 0.9"
+                  >
+                    <path
+                      fill="#ffff"
+                      d="M.375.675A.037.037 0 01.348.664L.16.476A.037.037 0 01.213.423l.161.161.311-.311a.037.037 0 11.053.053L.401.663a.037.037 0 01-.026.012"
+                    ></path>
+                  </svg>
+
+                 Priority access to new features and updates.</li>
+                <li className='flex gap-2 items-center'>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="#ffff"
+                    className="bg-[#5243C2] rounded-full p-1"
+                    data-name="Flat Color"
+                    viewBox="0 0 0.9 0.9"
+                  >
+                    <path
+                      fill="#ffff"
+                      d="M.375.675A.037.037 0 01.348.664L.16.476A.037.037 0 01.213.423l.161.161.311-.311a.037.037 0 11.053.053L.401.663a.037.037 0 01-.026.012"
+                    ></path>
+                  </svg>
+
+                 Dedicated account manager for personalized assistance.</li>
+                <li className='flex gap-2 items-center'>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="#ffff"
+                    className="bg-[#5243C2] rounded-full p-1"
+                    data-name="Flat Color"
+                    viewBox="0 0 0.9 0.9"
+                  >
+                    <path
+                      fill="#ffff"
+                      d="M.375.675A.037.037 0 01.348.664L.16.476A.037.037 0 01.213.423l.161.161.311-.311a.037.037 0 11.053.053L.401.663a.037.037 0 01-.026.012"
+                    ></path>
+                  </svg>
+
+                 Access to premium research reports and market insights.</li>
+                <li className='flex gap-2 items-center'>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="#ffff"
+                    className="bg-[#5243C2] rounded-full p-1"
+                    data-name="Flat Color"
+                    viewBox="0 0 0.9 0.9"
+                  >
+                    <path
+                      fill="#ffff"
+                      d="M.375.675A.037.037 0 01.348.664L.16.476A.037.037 0 01.213.423l.161.161.311-.311a.037.037 0 11.053.053L.401.663a.037.037 0 01-.026.012"
+                    ></path>
+                  </svg>
+
+                 Invitation to exclusive networking events and conferences.</li>
               </ul>
               <button className='bg-purple-400 bg-opacity-90 font-semibold  p-3 rounded-full mt-16 w-full'>Choose Plan</button>
             </div>
