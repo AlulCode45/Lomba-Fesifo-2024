@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import {
-    TERipple,
     TEModal,
     TEModalDialog,
     TEModalContent,
     TEModalHeader,
     TEModalBody,
-    TEModalFooter,
 } from "tw-elements-react";
 
 export default function Content2() {
@@ -18,7 +16,7 @@ export default function Content2() {
             {/* <!-- Modal --> */}
             <TEModal show={showModal} setShow={setShowModal} scrollable>
                 <TEModalDialog size="xl" className="rounded-lg">
-                    <TEModalContent className="bg-black/80">
+                    <TEModalContent className="!bg-black/80">
                         <TEModalHeader className="!border-0">
                             {/* <!--Modal title--> */}
                             <h5 className="text-xl leading-normal text-white font-semibold">
