@@ -73,7 +73,7 @@ body {
   z-index: 0;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1440px) {
   .glow-decorator2 {
     width: 100vw;
     right: 0;
@@ -95,4 +95,36 @@ body {
 
 main {
   margin-bottom: 50px;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.5s ease-in-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-in-out forwards;
 }
