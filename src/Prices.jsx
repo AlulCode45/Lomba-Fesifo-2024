@@ -197,7 +197,7 @@ export default function Prices() {
     }, []);
 
     return (
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-5 my-10">
+        <section className="grid grid-cols-1 lg:grid-cols-3 gap-5 my-10">
             <div className="col card-header grid grid-cols-2 items-center relative">
                 <a href="" className='absolute bg-gray-400 bg-opacity-30 p-3  text-white top-3 right-3 rounded-full'>
                     <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">

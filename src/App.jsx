@@ -12,6 +12,35 @@ import Content2 from './Content2';
 export default function App() {
   const [activeElement, setActiveElement] = useState("");
 
+  const [openMenu, setOpenMenu] = useState(false);
+  const [animating, setAnimating] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check window size
+  useEffect(() => {
+    const checkWindowSize = () => {
+      setIsMobile(window.innerWidth <= 768); // You can adjust the breakpoint as needed
+    };
+
+    // Initial check
+    checkWindowSize();
+
+    // Add event listener
+    window.addEventListener('resize', checkWindowSize);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', checkWindowSize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!openMenu && isMobile) {
+      setAnimating(true);
+      setTimeout(() => setAnimating(false), 500); // Durasi animasi harus sama dengan di CSS
+    }
+  }, [openMenu, isMobile]);
+
   const handleClick = (value) => {
     if (value === activeElement) {
       setActiveElement("");
@@ -22,33 +51,47 @@ export default function App() {
 
   return (
     <>
-      <header className="container mx-auto px-auto">
+      <header className="container mx-auto px-auto  md:px-10">
         <nav className="flex justify-between py-4 items-center">
-          <h1 className="icon-app text-white font-semibold text-3xl">
+          <h1 className="icon-app text-white font-semibold text-3xl z-30" onClick={() => setOpenMenu(!openMenu)}>
             Finanza.
           </h1>
-          <div className="hidden gap-10  md:flex" id="app-menu">
+          <div className="hidden gap-10 lg:flex" id="app-menu">
             <a href="#" className="text-white hover:underline hover:underline-offset-8 hover:transition-all hover:ease-in hover:duration-200 decoration-purple-500">Home</a>
             <a href="#" className="text-white hover:underline hover:underline-offset-8 hover:transition-all hover:ease-in hover:duration-200 decoration-purple-500">Market</a>
             <a href="#" className="text-white hover:underline hover:underline-offset-8 hover:transition-all hover:ease-in hover:duration-200 decoration-purple-500">Exchange</a>
             <a href="#" className="text-white hover:underline hover:underline-offset-8 hover:transition-all hover:ease-in hover:duration-200 decoration-purple-500">Trade</a>
           </div>
-          <button className="text-white bg-purple-700  font-semibold py-2 px-5 rounded-md">Register</button>
+          <button className="text-white bg-purple-700 font-semibold py-2 px-5 rounded-md  z-30">Register</button>
+
+          <div
+            id="mobile-menu"
+            className={`w-screen absolute bg-black/80 left-0 px-14 py-5 top-20 ${openMenu && isMobile ? 'animate-slide-down' : animating && isMobile ? 'animate-slide-up' : 'hidden'
+              } transition-all ease-in delay-150 duration-1000`}
+          >
+            <div className="gap-3 flex flex-col" id="app-menu">
+              <a href="#" className="text-white hover:underline hover:underline-offset-8 hover:transition-all hover:ease-in hover:duration-200 decoration-purple-500">Home</a>
+              <a href="#" className="text-white hover:underline hover:underline-offset-8 hover:transition-all hover:ease-in hover:duration-200 decoration-purple-500">Market</a>
+              <a href="#" className="text-white hover:underline hover:underline-offset-8 hover:transition-all hover:ease-in hover:duration-200 decoration-purple-500">Exchange</a>
+              <a href="#" className="text-white hover:underline hover:underline-offset-8 hover:transition-all hover:ease-in hover:duration-200 decoration-purple-500">Trade</a>
+            </div>
+          </div>
         </nav>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center z-50">
-          <div className="col order-2 md:order-1">
-            <h1 className="text-white font-black text-4xl md:text-[90px] leading-tight">Welcome to Finanza.</h1>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center z-50">
+          <div className="col order-2 lg:order-1">
+            <h1 className="text-white font-black text-4xl lg:text-[90px] leading-tight">Welcome to Finanza.</h1>
             <p className="text-white">
               Discover Finanza, where finance meets crypto. Empower your journey with real-time insights and
               personalized portfolio
               management. Unlock the potential of crypto finance with us.
             </p>
-            <div className="flex flex-col md:flex-row gap-5 md:gap-8 mt-4">
+            <div className="flex flex-col lg:flex-row gap-5 lg:gap-8 mt-4">
               <button className="border border-white rounded-full py-3 px-7 text-white font-semibold hover:bg-main hover:border-main transition-all ease-in duration-100  hover:scale-105">
                 Invest Now
               </button>
-              <button type="button" className="flex items-center justify-center md:w-44 w-full text-white bg-black rounded-lg h-14 border border-white hover:scale-105 transition-all ease-in">
+              <button type="button" className="flex items-center justify-center lg:w-44 w-full text-white bg-black rounded-lg h-14 border border-white hover:scale-105 transition-all ease-in">
                 <div className="mr-3">
                   <svg viewBox="30 336.7 120.9 129.2" width="25">
                     <path fill="#FFD400"
@@ -75,19 +118,21 @@ export default function App() {
               </button>
             </div>
           </div>
-          <div className="col order-1 md:order-2">
+          <div className="col order-1 lg:order-2">
             <img src="assets/Hero.png" alt="" />
           </div>
         </div>
       </header>
 
-      <main className="container mx-auto">
+      <main className="container mx-auto md:px-10">
+
+
         <Prices />
-        <section className='grid grid-cols-1 md:grid-cols-2 gap-2 items-center'>
+        <section className='grid grid-cols-1 lg:grid-cols-2 gap-2 items-center'>
           <div className="col flex justify-center">
             {/* <img src="/assets/Blockchain.png" alt="" /> */}
             <div className="flex flex-col relative justify-center items-center">
-              <img src="/assets/BlockchainHead.png" alt="" className='w-28 h-2w-28 top-24 md:w-32 md:h-32 absolute  md:top-20 animate-bounce' />
+              <img src="/assets/BlockchainHead.png" alt="" className='w-28 h-2w-28 top-24 lg:w-32 lg:h-32 absolute  lg:top-20 animate-bounce' />
               <img src="/assets/BlockchainBody.png" alt="" className='w-full' />
             </div>
           </div>
@@ -107,15 +152,15 @@ export default function App() {
           </div>
         </section>
 
-        <section className='grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-0 items-center '>
-          <div className="col order-2 md:order-1">
+        <section className='grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-0 items-center '>
+          <div className="col order-2 lg:order-1">
             <h2 className='text-4xl font-bold mb-4'>What Are The Advantages of Finanza for #FutureAssets?</h2>
             <p>
               Finanza isn't just another crypto finance app; it's a gateway to a more inclusive and innovative financial future. With its outstanding features, Finanza enables you to explore and harness the limitless potential of crypto assets to achieve your financial goals. Its ability to provide the best prices in the market, supported by 24/7 transaction functionality, offers you the freedom to transact anytime, anywhere, ensuring you always get the best value for your investments.
             </p>
             <Content2 />
           </div>
-          <div className="col flex justify-center order-1 md:order-2 mt-32 md:mt-0">
+          <div className="col flex justify-center order-1 lg:order-2 mt-32 lg:mt-0">
             {/* <img src="/assets/Etherium.png" alt="" /> */}
             <div className="flex flex-col relative justify-center items-center ">
               <img src="/assets/EtheriumHead.png" alt="" className='w-24 h-40 absolute top-10 animate-bounce' />
@@ -129,8 +174,8 @@ export default function App() {
 
         <section className='mt-32'>
           <h2 className='text-center text-3xl font-semibold mb-16'>Pricing</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 bg-[#200049] p-4 md:p-14 rounded-lg gap-12 backdrop-filter backdrop-blur-lg bg-opacity-40 relative items-center">
-            <div className="p-10 md:hover:-mt-10 transition-all ease-in">
+          <div className="grid grid-cols-1 lg:grid-cols-3 bg-[#200049] p-4 lg:p-14 rounded-lg gap-12 backdrop-filter backdrop-blur-lg bg-opacity-40 relative items-center">
+            <div className="p-10 lg:hover:-mt-10 transition-all ease-in">
               <h3 className='text-xl font-bold'><span className='text-[3rem]'>$9.99 </span>/Month</h3>
               <h4 className='text-xl font-semibold mt-5'>Bronze package</h4>
               <p className='my-2'>Benefits :</p>
@@ -190,7 +235,7 @@ export default function App() {
 
               <button className='bg-gray-500  hover:bg-main hover:border-main transition-all ease-in duration-100 bg-opacity-25 font-semibold  mt-16 w-full p-3 rounded-full'>Chose Plan</button>
             </div>
-            <div className="p-10 md:hover:-mt-10 transition-all ease-in">
+            <div className="p-10 lg:hover:-mt-10 transition-all ease-in">
               <h3 className='text-xl font-bold'><span className='text-[3rem]'>$19.9 </span>/Month</h3>
               <h4 className='text-xl font-semibold mt-5'>Silver package</h4>
               <p className='my-2'>Benefits :</p>
@@ -267,7 +312,7 @@ export default function App() {
 
               <button className='bg-gray-500 hover:bg-main hover:border-main transition-all ease-in duration-100 bg-opacity-25 font-semibold  mt-16 w-full p-3 rounded-full'>Chose Plan</button>
             </div>
-            <div className="p-3 md:p-10 py-20 bg-[#231D4F] rounded-xl backdrop-filter backdrop-blur-2xl bg-opacity-80 relative shadow-xl shadow-purple-400 md:-mt-24">
+            <div className="p-3 lg:p-10 py-20 bg-[#231D4F] rounded-xl backdrop-filter backdrop-blur-2xl bg-opacity-80 relative shadow-xl shadow-purple-400 lg:-mt-24">
               <div className="bg-purple-500 bg-opacity-20 font-semibold p-3 text-sm rounded-tr-xl rounded-bl-xl text-white w-1/2 text-center right-0 absolute top-0">MOST POPULAR</div>
               <h3 className='text-xl font-bold mt-7'><span className='text-[3rem]'>$29.9 </span>/Month</h3>
               <h4 className='text-xl font-semibold mt-5'>Gold package</h4>
@@ -399,7 +444,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className='mt-20 p-0 md:p-20 bg-black bg-opacity-15 rounded-lg backdrop-filter backdrop-blur-lg'>
+        <section className='mt-20 p-0 lg:p-20 bg-black bg-opacity-15 rounded-lg backdrop-filter backdrop-blur-lg'>
           <div id="accordionExample">
             <div className="my-4">
               <h2 className="mb-0" id="headingOne">
@@ -520,33 +565,33 @@ export default function App() {
         </section>
       </main >
 
-      <footer>
-        <div class="text-white py-10">
-          <div class="container mx-auto">
-            <div class="md:flex">
-              <div class="w-full md:w-7/12">
-                <h1 class="font-bold text-3xl">Finanza.</h1>
-                <p class="text-sm">
+      <footer className='md:px-10'>
+        <div className="text-white py-10">
+          <div className="container mx-auto">
+            <div className="lg:flex">
+              <div className="w-full lg:w-7/12">
+                <h1 className="font-bold text-3xl">Finanza.</h1>
+                <p className="text-sm">
                   Smartly manage your finances and crypto investment
                 </p>
-                <div class="addres">
-                  <h4 class="mt-4 font-bold">Jakarta</h4>
-                  <p class="text-sm">
+                <div className="addres">
+                  <h4 className="mt-4 font-bold">Jakarta</h4>
+                  <p className="text-sm">
                     Millennium Centennial Center Building Lt.2, Jl. Jend.
                     Sudirman No. Kav 25, Kuningan South Jakarta 2920.
                   </p>
-                  <h4 class="mt-4 font-bold">Bali</h4>
-                  <p class="text-sm">
+                  <h4 className="mt-4 font-bold">Bali</h4>
+                  <p className="text-sm">
                     Jl. Sunset Road No. 48 a-b, Legian, Kuta, Kabupaten Badung,
                     Bali 8036l.
                   </p>
 
-                  <p class="text-sm my-4">
+                  <p className="text-sm my-4">
                     Tamora Square, Jl. subak Sari l3, Desa Tibubeneng, Kec. Kuta
                     Utara, Kabupaten Badung, Bali 80361.
                   </p>
                 </div>
-                <div class="contact flex gap-3 ml-2">
+                <div className="contact flex gap-3 ml-2">
                   <a href="#">
                     <FaFacebook className="w-7 h-7 bg-gray-700 hover:transition-all ease-in text-white p-2 rounded-full hover:bg-purple-600" />
                   </a>
@@ -570,79 +615,79 @@ export default function App() {
                   </a>
                 </div>
               </div>
-              <div class="md:flex mt-2 gap-8 w-full md:w-5/12">
-                <div class="py-4">
-                  <ul class="text-sm grid gap-2">
+              <div className="lg:flex mt-2 gap-8 w-full lg:w-5/12">
+                <div className="py-4">
+                  <ul className="text-sm grid gap-2">
                     <li>
-                      <a href="#" class="text-[16px] hover:underline">
+                      <a href="#" className="text-[16px] hover:underline">
                         Company
                       </a>
                     </li>
                     <li>
-                      <a href="#" class="text-[16px] hover:underline">
+                      <a href="#" className="text-[16px] hover:underline">
                         About Us
                       </a>
                     </li>
                     <li>
-                      <a href="#" class="hover:underline">
+                      <a href="#" className="hover:underline">
                         Contact Us
                       </a>
                     </li>
                     <li>
-                      <a href="#" class="hover:underline">
+                      <a href="#" className="hover:underline">
                         Affiliate Program
                       </a>
                     </li>
                     <li>
-                      <a href="#" class="hover:underline">
+                      <a href="#" className="hover:underline">
                         Help
                       </a>
                     </li>
                   </ul>
                 </div>
-                <div class="py-4">
-                  <ul class="text-sm grid gap-2">
+                <div className="py-4">
+                  <ul className="text-sm grid gap-2">
                     <li>
-                      <a href="#" class="text-[16px] hover:underline">
+                      <a href="#" className="text-[16px] hover:underline">
                         Product
                       </a>
                     </li>
                     <li>
-                      <a href="# " class="hover:underline">
+                      <a href="# " className="hover:underline">
                         Academy
                       </a>
                     </li>
                     <li>
-                      <a href="#" class="hover:underline">
+                      <a href="#" className="hover:underline">
                         OTC
                       </a>
                     </li>
                   </ul>
                 </div>
-                <div class="py-4">
-                  <ul class="text-sm grid gap-2">
+                <div className="py-4">
+                  <ul className="text-sm grid gap-2">
                     <li>
-                      <a href="#" class="text-[16px] hover:underline">
+                      <a href="#" className="text-[16px] hover:underline">
                         Information
                       </a>
                     </li>
                     <li>
-                      <a href="#" class="hover:underline">
+                      <a href="#" className="hover:underline">
                         Terms and Conditions
                       </a>
                     </li>
                     <li>
-                      <a href="#" class="hover:underline">
+                      <a href="#" className="hover:underline">
                         Privacy policy
                       </a>
                     </li>
                     <li>
-                      <a href="#" class="hover:underline">
+                      <a href="#" className="hover:underline">
                         API
                       </a>
                     </li>
                     <li>
-                      <a href="#" class="hover:underline">
+                      <a href="#" className="hover:underline">
                         Blog
                       </a>
                     </li>
@@ -650,18 +695,18 @@ export default function App() {
                 </div>
               </div>
             </div>
-            <div class="footer-title">
-              <p class="text-sm  my-6">
+            <div className="footer-title">
+              <p className="text-sm  my-6">
                 Trading cryptocurrencies is a high-risk activity. Cryptocurrency
                 prices are highly volatile, where prices can change
                 significantly over time. Please do your research before making a
                 decision to buy or sell crypto assets.
-                <span class="font-bold">Finanza</span> does not force users to
+                <span className="font-bold">Finanza</span> does not force users to
                 buy, sell, or make crypto assets as an investment or action for
                 profit. All decisions in crypto asset transactions are the
                 decision of the user.
               </p>
-              <div class="text-sm">
+              <div className="text-sm">
                 Copyright @ 2024 PT Finanza Investama Indonesia. All Right
                 Reserved.
               </div>
